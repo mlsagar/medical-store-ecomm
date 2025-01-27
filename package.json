@@ -1,0 +1,35 @@
+{
+  "name": "mean-medical-store",
+  "version": "1.0.0",
+  "description": "Web application build in MEAN stack",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run startBackend | npm run startFrontend",
+    "startFrontend": "cd public/frontend && npm start",
+    "startBackend": "nodemon --inspect"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlsagar/medical-store-ecomm.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "TypeScript",
+    "Angular",
+    "Node",
+    "Mongo",
+    "Express"
+  ],
+  "author": "Sagar Maharjan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mlsagar/medical-store-ecomm/issues"
+  },
+  "homepage": "https://github.com/mlsagar/medical-store-ecomm#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5"
+  }
+}
