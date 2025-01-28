@@ -1,0 +1,7 @@
+.login {
+    @apply mx-auto max-w-xl;
+}
+
+.login-form {
+    @apply p-7 pb-0;
+}

@@ -1,0 +1,70 @@
+<form [formGroup]="registerForm" (ngSubmit)="register()" appComparePassword class="card register-form form">
+    <div class="pb-4 font-bold text-xl">
+        Create your account
+    </div>
+    <div class="form__group">
+        <label for="name" class="form__label">
+            Name
+            <span class="text-red-600">*</span>
+        </label>
+        <input type="text" id="name" name="name" formControlName="name" placeholder="Enter your name" required class="form__control">
+        <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="form__validation-text">
+            <span *ngIf="name?.hasError('required')">
+                Name is required.&nbsp;
+            </span>
+            <span *ngIf="name?.hasError('minlength')">
+                Name must be at least of 3 letters.&nbsp;
+            </span>
+        </div>
+    </div>
+    <div class="form__group">
+        <label for="email" class="form__label">
+            Email
+            <span class="text-red-600">*</span>
+        </label>
+        <input type="email" id="email" name="email" formControlName="email" placeholder="Enter your email" required class="form__control">
+        <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="form__validation-text">
+            <span *ngIf="email?.hasError('required')">
+                Email is required.&nbsp;
+            </span>
+            <span *ngIf="email?.hasError('email')">
+                Email is invalid.&nbsp;
+            </span>
+        </div>
+    </div>
+    <div class="form__group">
+        <label for="password" class="form__label">
+            Password <span class="text-red-600">*</span>
+        </label>
+        <input type="password" id="password" name="password" formControlName="password" class="form__control" placeholder="Enter your password" required>
+        <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="form__validation-text">
+            <span *ngIf="password?.hasError('required')">
+                Password is required.&nbsp;
+            </span>
+            <span *ngIf="password?.hasError('minlength')">
+                Password must be at least of 8 letters.&nbsp;
+            </span>
+        </div>
+    </div>
+    <div class="form__group">
+        <label for="confirm-password" class="form__label">
+            Confirm Password
+            <span class="text-red-600">*</span>
+        </label>
+        <input type="password" id="confirm-password" class="form__control" name="confirmPassword" formControlName="confirmPassword" placeholder="Enter your password" required>
+        <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)" class="form__validation-text">
+            <span *ngIf="confirmPassword?.hasError('required')">
+                Confirm Password is required.&nbsp;
+            </span>
+            <span *ngIf="confirmPassword?.hasError('minlength')">
+                Confirm Password must be at least of 8 letters.&nbsp;
+            </span>
+        </div>
+        <div *ngIf="registerForm.hasError('comparePassword') && (registerForm.touched || registerForm.dirty) && (confirmPassword?.dirty || confirmPassword?.touched) && (password?.dirty || password?.touched)" class="form__validation-text">
+            Password and confirm password not matched.
+        </div>
+    </div>
+    <div class="pt-3">
+        <button type="submit" class="button button--primary" [ngClass]="isButtonDisabled ? 'cursor-not-allowed': ''" [disabled]="isButtonDisabled">Sign up</button>
+    </div>
+</form>

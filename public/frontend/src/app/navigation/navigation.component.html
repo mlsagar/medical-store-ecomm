@@ -1,0 +1,17 @@
+<header class="header">
+    <div class="container header__wrapper">
+        <h1 class="w-40 text-bold">
+            <a [routerLink]="routes.HOME">
+                MEAN Medical Store
+            </a>
+        </h1>
+        <nav class="flex items-center">
+            <a [routerLink]="routes.LOGIN" class="button mr-3" *ngIf="!isLoggedIn && isSignUp">Login</a>
+            <a [routerLink]="routes.REGISTER" class="button button--outline" *ngIf="!isLoggedIn && !isSignUp">Create account</a>
+            <app-dropdown-menu (onLogout)="logout()" *ngIf="isLoggedIn" [user]="userCredentials"></app-dropdown-menu>
+        </nav>
+    </div>
+</header>
+<div class="full h-[65px] block">
+
+</div>
