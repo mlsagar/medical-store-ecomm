@@ -1,5 +1,6 @@
 require("../components/users/users-model");
 require("../components/products/products-model");
+require("../components/order-history/order-history-model");
 const mongoose = require("mongoose");
 
 mongoose.connect(process.env.DATABASE_URL);
