@@ -14,6 +14,32 @@ const addUser = function (request, response) {
         .finally(_sendResponse.bind(null, response, responseCollection));
 }
 
+const updateUser = function (request, response) {
+    const userId = request.params.userId;
+    const responseCollection = _createResponseCollection();
+    if (!mongoose.isValidObjectId(userId)) {
+        responseCollection.status = Number(process.env.BAD_REQUEST_STATUS_CODE);
+        responseCollection.message =  process.env.INVALID_USER_ID_MESSAGE;
+        _sendResponse(response, responseCollection);
+        return;
+    }
+
+    User.findById(userId).exec()
+        .then(_updateUser.bind(null, request, responseCollection))
+        .catch(_setInternalError.bind(null, responseCollection))
+        .finally(_sendResponse.bind(null, response, responseCollection));
+    }
+
+const _updateUser = function(request, responseCollection, user) {
+    user.name = request.body.name;
+    user.email = request.body.email;
+    user.creditCard = request.body.creditCard;
+    user.password = user.password;
+    user.save();
+    responseCollection.status = Number(process.env.SUCCESS_STATUS_CODE);
+    responseCollection.message = "Updated user successfully";
+}
+
 const login = function (request, response) {
     const responseCollection = _createResponseCollection();
     if (request.body && request.body.email && request.body.password) {
@@ -52,7 +78,8 @@ const _createNewUser = function (request, hashPassword) {
             const newUser = {
                 name: request.body.name,
                 email: request.body.email,
-                password: hashPassword
+                password: hashPassword,
+                creditCard: request.body.creditCard
             }
             resolve(newUser);
             return;
@@ -76,7 +103,9 @@ const _verifyPassword = function(request, responseCollection, databaseUser) {
         responseCollection.data = [{
             name:databaseUser[0].name,
             email:databaseUser[0].email,
-            username: databaseUser[0].username,
+            _id: databaseUser[0]._id,
+            creditCard: databaseUser[0].creditCard,
+            password: request.body.password
         }];
         resolve(bcrypt.compare(request.body.password, databaseUser[0].password));
     })
@@ -123,5 +152,6 @@ const _sendResponse = function (response, responseCollection) {
 
 module.exports = {
     addUser,
+    updateUser,
     login
 }

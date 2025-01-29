@@ -26,6 +26,9 @@ export class RegisterComponent implements OnInit {
   get name() {
     return this.registerForm.get("name");
   }
+  get creditCard() {
+    return this.registerForm.get("creditCard");
+  }
   get email() {
     return this.registerForm.get("email");
   }
@@ -58,6 +61,7 @@ export class RegisterComponent implements OnInit {
   get _createRegisterForm() {
     return this.formBuilder.group({
       name: [null, [Validators.required, Validators.minLength(3)]],
+      creditCard: [null, [Validators.required, Validators.minLength(10), Validators.maxLength(15)]],
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.minLength(8)]],
       confirmPassword: [null, [Validators.required, Validators.minLength(8)]]

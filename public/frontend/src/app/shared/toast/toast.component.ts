@@ -5,8 +5,7 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 @Component({
   selector: 'app-toast',
   imports: [CommonModule, AsyncPipe],
-  templateUrl: './toast.component.html',
-  styleUrl: './toast.component.css'
+  templateUrl: './toast.component.html'
 })
 export class ToastComponent implements OnInit{
   messageType = MESSAGE_TYPE;

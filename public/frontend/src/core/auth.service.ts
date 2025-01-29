@@ -12,8 +12,11 @@ export enum CRUD_ACTION {
 
 export interface UserCredentials {
   iat: number;
+  _id: string;
   name: string;
   email: string;
+  creditCard: string;
+  password: string;
 }
 
 @Injectable({

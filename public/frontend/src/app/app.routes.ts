@@ -5,7 +5,9 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ProductComponent } from './product/product.component';
-// import { LoginComponent } from './login/login.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { authGuard } from '../core/auth.guard';
+import { ProfileComponent } from './profile/profile.component';
 
 const routePaths = environment.ROUTE_PATHS;
 
@@ -25,20 +27,23 @@ export const routes: Routes = [
     },
     {
         path: routePaths.HOME,
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [authGuard]
     },
     {
         path: routePaths.SINGLE_PRODUCT,
-        component: ProductComponent
+        component: ProductComponent,
+        canActivate: [authGuard]
     },
-    // {
-    //     path: routePaths.ORDER_HISTORY,
-    //     component: HomeComponent
-    // },
-    // {
-    //     path: routePaths.HOME,
-    //     component: HomeComponent
-    // }
+    {
+        path: routePaths.ORDER_HISTORY,
+        component: OrderHistoryComponent,
+        canActivate: [authGuard]
+    },
+    {
+        path: routePaths.PROFILE,
+        component: ProfileComponent
+    },
     {
         path: "**",
         component: ErrorPageComponent

@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit{
     return this._authService.isLoggedIn;
   }
 
-  count = environment.INITIAL_ARTICLE_COUNT;
+  count = environment.INITIAL_PRODUCT_COUNT;
 
   constructor(
     private _productService: ProductService,
@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit{
     this._getAllProducts();
   }
 
-  _getAllProducts(count = environment.INITIAL_ARTICLE_COUNT) {
+  _getAllProducts(count = environment.INITIAL_PRODUCT_COUNT) {
     this._productService.allProducts(count).subscribe({
       next: this._onGetProductSuccess.bind(this),
       error: this._onGetProductError.bind(this)
@@ -56,10 +56,10 @@ export class HomeComponent implements OnInit{
   
   onScroll() {
     if (this.isLoggedIn) {      
-      if(this.products.length < this.count){
+      if(this.count >= 24){
         return;
       }
-      this.count += environment.INITIAL_ARTICLE_COUNT;
+      this.count += environment.INITIAL_PRODUCT_COUNT;
       this._getAllProducts(this.count);
     }
   }

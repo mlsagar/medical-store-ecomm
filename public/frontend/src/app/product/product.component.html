@@ -7,10 +7,10 @@
             </div>
             <div class="flex -mx-2 mb-4 justify-center" *ngIf="product.stock !== 0">
                 <div class="w-1/2 px-2 ">
-                    <button class="w-full button button--primary button--full">Add to Cart</button>
+                    <button class="w-full button button--primary button--full" (click)="addToCart(product._id)" [disabled]="isButtonDisabled">Add to Cart</button>
                 </div>
                 <div class="w-1/2 px-2">
-                    <button class="w-full button button--outline button--full">View Order History</button>
+                    <button class="w-full button button--outline button--full" [disabled]="isButtonDisabled" (click)="routToOrderHistory()">View Order History</button>
                 </div>
             </div>
         </div>
