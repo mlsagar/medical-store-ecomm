@@ -6,7 +6,7 @@
             </a>
         </h1>
         <nav class="flex items-center">
-            <a [routerLink]="routes.LOGIN" class="button mr-3" *ngIf="!isLoggedIn && isSignUp">Login</a>
+            <a [routerLink]="routes.LOGIN" class="button button--outline" *ngIf="!isLoggedIn && isSignUp">Login</a>
             <a [routerLink]="routes.REGISTER" class="button button--outline" *ngIf="!isLoggedIn && !isSignUp">Create account</a>
             <app-dropdown-menu (onLogout)="logout()" *ngIf="isLoggedIn" [user]="userCredentials"></app-dropdown-menu>
         </nav>

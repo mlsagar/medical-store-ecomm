@@ -6,12 +6,16 @@ export const environment = {
         HOME: "/home",
         LOGIN: "/login",
         REGISTER: "/register",
-        USERS: "/users"
+        USERS: "/users",
+        PRODUCTS: "/products",
+        ORDER_HISTORY: "/order-history"
     },
     ROUTE_PATHS: {
         HOME: "home",
         REGISTER: "register",
         LOGIN: "login",
+        SINGLE_PRODUCT: "product/:productId",
+        ORDER_HISTORY: "order-history"
     },
     LOCAL_STORAGE: {
         USER: "user"
@@ -26,4 +30,5 @@ export const environment = {
         NO_CHANGES_MADE: "You need to make some changes before submitting the form.",
         ACCESS_DENIED: "Access denied!!!"      
     },
+    INITIAL_ARTICLE_COUNT: 8
 }

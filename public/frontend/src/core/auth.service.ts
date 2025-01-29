@@ -13,8 +13,7 @@ export enum CRUD_ACTION {
 export interface UserCredentials {
   iat: number;
   name: string;
-  username: string;
-  image: string
+  email: string;
 }
 
 @Injectable({
@@ -49,7 +48,6 @@ export class AuthService {
   set userToken(token: string | null) {
     if (token) {
       const jwtDecodeCode: UserCredentials = jwtDecode(token);
-      jwtDecodeCode.image = this.baseUrl + jwtDecodeCode.image;
       this.#userCredentials = jwtDecodeCode;
       localStorage.setItem(this.userLocalStorageKey, JSON.stringify({token}));
     }

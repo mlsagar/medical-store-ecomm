@@ -16,7 +16,6 @@ export interface DropdownConfig {
 
 @Component({
   selector: 'app-dropdown-menu',
-  standalone: true,
   imports: [CommonModule, ClickOutsideDirective, RouterLink],
   templateUrl: './dropdown-menu.component.html',
   styleUrl: './dropdown-menu.component.css'

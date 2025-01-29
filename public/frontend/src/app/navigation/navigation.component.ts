@@ -34,9 +34,6 @@ export class NavigationComponent {
   logout() {
     localStorage.clear();
     this._authService.isLoggedIn = false;
-  //   this._router.routeReuseStrategy.shouldReuseRoute = function () {
-  //     return false;
-  // }
-  //   this._router.navigate([this.routes.HOME]);
+    this._router.navigate([this.routes.LOGIN]);
   }
 }

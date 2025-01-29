@@ -7,11 +7,15 @@ export const environment = {
         LOGIN: "url constant for login",
         REGISTER: "url constant for register",
         USERS: "url constant for users",
+        PRODUCTS: "url constant for products",
+        ORDER_HISTORY: "url constant for order history"
     },
     ROUTE_PATHS: {
         HOME: "route path constant for home",
         REGISTER: "route path constant for register",
         LOGIN: "route path constant for login",
+        SINGLE_PRODUCT: "route path constant for single product",
+        ORDER_HISTORY: "route path constant for order history"
     },
     LOCAL_STORAGE: {
         USER: "user constant key to store in localstorage"
@@ -26,4 +30,5 @@ export const environment = {
         NO_CHANGES_MADE: "message for no changes mage in the form",
         ACCESS_DENIED: "message for access denied"
     },
+    INITIAL_ARTICLE_COUNT: 0, //"initial value for articles count"
 }
